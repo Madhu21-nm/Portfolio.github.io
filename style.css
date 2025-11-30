@@ -1,0 +1,188 @@
+:root {
+  --bg: #172d13;
+  --accent: #d76f30;
+  --highlight: #6bb77b;
+  --text: #ffffff;
+  --card: #1f3a1a;
+  --light: #2d4a27;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+
+h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 700; }
+h1 { font-size: 5.5rem; }
+h2 { font-size: 4rem; color: var(--highlight); text-align: center; margin-bottom: 60px; }
+h2::after {
+  content: '';
+  width: 120px;
+  height: 6px;
+  background: linear-gradient(90deg, var(--accent), var(--highlight));
+  display: block;
+  margin: 20px auto;
+  border-radius: 3px;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 16px 44px;
+  background: var(--accent);
+  color: white;
+  border-radius: 50px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.4s ease;
+  box-shadow: 0 10px 30px rgba(215, 111, 48, 0.4);
+}
+.btn:hover {
+  background: var(--highlight);
+  color: #000;
+  transform: translateY(-6px);
+  box-shadow: 0 15px 40px rgba(107, 183, 123, 0.5);
+}
+.secondary {
+  background: transparent;
+  border: 2px solid var(--highlight);
+  color: var(--highlight);
+}
+.secondary:hover {
+  background: var(--highlight);
+  color: #000;
+  border-color: var(--highlight);
+}
+
+/* Hero */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10%;
+  background: linear-gradient(135deg, #172d13 0%, #1e3a18 100%);
+  position: relative;
+}
+.hero-content { max-width: 650px; z-index: 2; }
+.hero h1 span {
+  background: linear-gradient(90deg, var(--accent), var(--highlight));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero p {
+  font-size: 1.5rem;
+  margin: 24px 0;
+  opacity: 0.9;
+}
+
+/* Animation Container */
+.hero-animation img{
+  width: 300px;
+}
+
+/* Sections */
+section { padding: 140px 10%; }
+.about-text {
+  max-width: 900px;
+  margin: 0 auto;
+  font-size: 1.25rem;
+  background: var(--card);
+  padding: 50px;
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+  border: 1px solid var(--light);
+}
+
+/* Projects */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.project-card {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+  transition: all 0.5s ease;
+}
+.project-card:hover {
+  transform: translateY(-20px);
+  box-shadow: 0 25px 60px rgba(215, 111, 48, 0.3);
+}
+.project-card img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  transition: 0.6s;
+}
+.project-card:hover img { transform: scale(1.15); }
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, var(--bg));
+  color: white;
+  padding: 40px 20px 20px;
+  text-align: center;
+  transform: translateY(40px);
+  transition: 0.5s;
+}
+.project-card:hover .overlay { transform: translateY(0); }
+
+/* Timeline */
+.timeline::before {
+  background: linear-gradient(var(--accent), var(--highlight));
+}
+.timeline-item::after {
+  background: var(--highlight);
+  border: 4px solid var(--accent);
+  box-shadow: 0 0 20px rgba(107, 183, 123, 0.6);
+}
+
+/* Footer */
+.footer {
+  background: #0f1f0d;
+  padding: 120px 10% 60px;
+  text-align: center;
+}
+.social-links a img {
+  filter: brightness(0) invert(1);
+  transition: 0.4s;
+}
+.social-links a:hover img {
+  filter: hue-rotate(120deg) brightness(1.5);
+  transform: translateY(-10px) scale(1.2);
+}
+a{
+  text-decoration: none;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .hero { flex-direction: column; text-align: center; padding-top: 120px; }
+  .hero h1 { font-size: 4.2rem; }
+  .hero-animation lottie-player { width: 400px !important; height: 400px !important; }
+}
+
+@media (max-width: 768px) {
+  h1 { font-size: 3.5rem; }
+  h2 { font-size: 3rem; }
+  .about-text { padding: 30px; font-size: 1.1rem; }
+  .hero-animation lottie-player { width: 320px !important; height: 320px !important; }
+}
+
+@media (max-width: 480px) {
+  .hero h1 { font-size: 2.8rem; }
+  .btn { padding: 14px 32px; }
+  .project-grid { grid-template-columns: 1fr; }
+}
